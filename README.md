@@ -61,6 +61,7 @@ useEffect(() => {
   ...
 }, [])
 ```
+
 - [ ] 안에 값(들)을 넣어주면 넣어준 값(들)이 변할 때만 다시 랜더링을 해준다.
 - useEffect 안에서 return을 해주면 해당 컴포넌트가 없어질 때 코드가 실행된다.
 <br>
@@ -74,7 +75,6 @@ useEffect(() => {
 <br>
 ## [ css ]
 - create-react-app을 사용할 때
-<br>
 > 파일명.module.css로 css 파일을 모듈처럼 사용할 수 있다. 
 <br>
 - 장점: create-react-app이 랜덤하게 className을 지정해주어 클래스 이름들을 기억할 필요가 없다.
