@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-effect</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  function App() {
+    const [counter, setValue] = React.useState(0);
+    const [keyword, setKeyword] = React.useState("");
+
+    const onClick = () => setValue((prev) => prev + 1);
+    const onChange = (event) => setKeyword(event.target.value);
+
+    console.log("i run all the time");
+
+    // 처음 한 번만 실행된다.
+    React.useEffect(() => {
+      console.log("I run only once.");
+    }, []);
+
+    // counter의 값이 변할 때만 실행된다.
+    React.useEffect(() => {
+      console.log("I run when 'counter' changes.");
+    }, [counter]);
+
+    // keyword의 값이 변할 때만 실행된다.
+    React.useEffect(() => {
+      console.log("I run when 'keyword' changes.");
+    }, [keyword]);
+
+    // counter와 keyword의 값이 변할 때만 실행된다.
+    React.useEffect(() => {
+      console.log("I run when 'keyword & counter' changes.");
+    }, [counter, keyword]);
+
+    return (
+      <div>
+        <input onChange={onChange} type="text" placeholder="Serch here"/>
+        <h1>{counter}</h1>
+        <button onClick={onClick}>click me</button>
+      </div>
+    )
+  }
+
+  const root = document.getElementById("root");
+  ReactDOM.render(<App />, root);
+</script>
+</html>
