@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TodoList</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  function App() {
+    const [toDo, setToDo] = React.useState("");
+    const [toDos, setToDos] = React.useState([]); // 초기화를 해주는 것이 좋다.
+
+    const onChange = (event) => setToDo(event.target.value);
+
+    const onSubmit = (event) => {
+      event.preventDefault();
+
+      if (toDo === "") {
+        return;
+      }
+      
+      // ...는 나머지 매개변수로 정해지지 않은 수의 매개변수를 배열로 받을 수 있다.
+      setToDos((currentArray) => [toDo, ...currentArray]);
+      setToDo("");
+    };
+
+    return (
+      <div>
+        <h1>My TodoList ({toDos.length})</h1>
+        <form onSubmit={onSubmit}>
+          <input
+            onChange={onChange}
+            value={toDo}
+            type="text"
+            placeholder="Write your to do..."
+          />
+          <button>Add To Do</button>
+        </form>
+        <ul>
+          {toDos.map((item, index) => (
+            <li key={index}>{item}</li> // 고유한 key값이 있어야 한다.
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  const root = document.getElementById("root");
+  ReactDOM.render(<App />, root);
+</script>
+</html>
