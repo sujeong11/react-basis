@@ -12,7 +12,6 @@ nomadcoder의 ReactJS로 영화 웹 서비스 만들기를 보고 정리
 5.  속성이 다른 것이 있다. ex) class -> className, for -> htmlFor
 <br>
 <br>
-<br>
 
 # State
 ### [ state 값 설정하는 2가지 방법 ]
@@ -32,7 +31,6 @@ nomadcoder의 ReactJS로 영화 웹 서비스 만들기를 보고 정리
 - reset 버튼을 만들 때, setState()의 함수를 0값으로 지정해 활용하는 방법이 있다.
 <br>
 <br>
-<br>
 
 # Props
 > 부모 컴포넌트로부터 자식 컴포넌트에 데이터를 보낼 수 있게 해주는 방법
@@ -48,8 +46,6 @@ nomadcoder의 ReactJS로 영화 웹 서비스 만들기를 보고 정리
 > props의 타입을 지정, 틀리면 warning을 띄어준다.
 - 다양한 타입들이 존재
 - 꼭 필요한 것을 입력받을 수 있게 할 수 있다.
-
-<br>
 <br>
 <br>
 
