@@ -14,7 +14,7 @@ nomadcoder의 ReactJS로 영화 웹 서비스 만들기를 보고 정리
 <br>
 <br>
 
-# state
+# State
 ### [ state 값 설정하는 2가지 방법 ]
 1. `setCounter(counter+1);`
 2. `setCounter((current) => current +1);`
@@ -34,7 +34,7 @@ nomadcoder의 ReactJS로 영화 웹 서비스 만들기를 보고 정리
 <br>
 <br>
 
-# props
+# Props
 > 부모 컴포넌트로부터 자식 컴포넌트에 데이터를 보낼 수 있게 해주는 방법
 - props는 첫 번째 인자이자 유일한 인자다.
 - props는 내가 부모 컴포넌트에서 보낸 모든 것들을 갖는 오브젝트이다.
@@ -53,6 +53,55 @@ nomadcoder의 ReactJS로 영화 웹 서비스 만들기를 보고 정리
 <br>
 <br>
 
+# Effect
+> 특정 코드들이 첫 번째 component render에서만 실행되게 할 수 있다.
+나중에 state가 변화해도, 이 특정 코드는 다시 랜더링 되지 않는다.
+
+## - [ useEffect ]
+> 코드들이 언제 실행될 지 선택한다. 즉, 선택권을 가진다. <br>reactJS가 새로운 데이터가 들어올 때마다 자동으로 새로고침으로 동작하는 관점에서 보면 방어막 같은 존재이다. 
+- ex) API를 딱 한 번만 호출하고 다시는 하고 싶지 않을 떄, 특정 값이 변할 때 등
+```
+useEffect(() => {
+  ...
+}, [])
+```
+- [ ] 안에 값(들)을 넣어주면 넣어준 값(들)이 변할 때만 다시 랜더링을 해준다.
+- useEffect 안에서 return을 해주면 해당 컴포넌트가 없어질 때 코드가 실행된다.
+<br>
+<br>
+<br>
+
 # 이외
 ## [ React.memo ]
 부모의 props에 변화가 일어나면 모든 자식들이 다시 랜더링이 된다. 하지만, memo를 사용하면  자식들도 바뀌는 것만 다시 랜더링이 되어 속도가 느려지는 것을 막을 수 있다.
+<br>
+<br>
+## [ css ]
+- create-react-app을 사용할 때
+<br>
+> 파일명.module.css로 css 파일을 모듈처럼 사용할 수 있다. 
+<br>
+- 장점: create-react-app이 랜덤하게 className을 지정해주어 클래스 이름들을 기억할 필요가 없다.
+특징으로는 같은 이름의 className을 전달해주어도 HTML내에서는 랜덤 방식으로 생성된다. 
+<br>
+- 파일 이름에 module을 붙이는 이유는 클래스가 중첩되는 것을 방지하기 위해서이다.
+<br>
+<br>
+
+<사용법>
+원하는 컴포넌트에 css파일을 import해 className에 전달하면 된다. 
+<br>
+ex)
+- [Button.module.css 파일]
+```
+.btn {
+   ...
+}
+```
+- [Button.js 파일]
+```
+import styles from "./Button.module.css";
+  function Button( {text} ) {
+    return <button className={styles.btn}>{text}</button>
+  }
+```
